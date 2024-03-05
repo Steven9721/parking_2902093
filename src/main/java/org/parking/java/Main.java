@@ -13,7 +13,7 @@ import java.util.List;
 
 
 public class Main {
-    @SuppressWarnings("unused")
+    @SuppressWarnings("")
     public static void main(String[] args) {
        //Sistema de gestion de E/S
        //de un vehiculo
@@ -22,7 +22,9 @@ public class Main {
 
        Vehiculo carrito2 = new Vehiculo("ASD 143", TipoVehiculo.TAXI);
 
-       
+       Vehiculo motico = new Vehiculo();
+       motico.setPlaca("XSA 141");
+       motico.setTipoVehiculo(TipoVehiculo.MOTO);
 
        //crear(instanciar) un cliente 
 
@@ -36,13 +38,16 @@ public class Main {
         cliente1.addVehicle("WWW ERT", TipoVehiculo.MOTO);
 
         //Recoger la lista de  vehiculos del cliente
-        for(Vehiculo v :cliente1.misVehiculos){
-            System.out.println(v.placa);
-            System.out.println(v.tipoVehiculo);
+        for(Vehiculo v :cliente1.getMisVehiculos()){
+            System.out.println(v.getPlaca());
+            System.out.println(v.getTipoVehiculo());
             System.out.println("---------");
         }
        
-        System.out.println(cliente1.nombres);
+        //System.out.println(cliente1.setNombres("Michael Steven"));
+        cliente1.setNombres("Michael Steven");
+            System.out.println("Nombres actualizados correctamente.");
+
 
         //Instanciar cupos:
 
@@ -62,12 +67,12 @@ public class Main {
 
         Pago pago1 = new Pago(fechaHoraInicio , 
                               fechaHoraFin , 
-                              5000.0 , cliente1.misVehiculos.get(0) , 
+                              5000.0 , cliente1.getMisVehiculos().get(0) , 
                               cupito1,empleado1 );
 
         Pago pago2 = new Pago(fechaHoraInicio , 
                               fechaHoraFin , 
-                              10000.0 , cliente1.misVehiculos.get(0) , 
+                              10000.0 , cliente1.getMisVehiculos().get(0) , 
                               cupito2,  empleado1 );    
                               
      //Añadir a lista de pagos
@@ -85,20 +90,17 @@ public class Main {
             //  -fecha y hora de inicio
             //  -Fecha y hora de fin
             //  -cupo(nombre)
-            System.out.println("|Placa:"+ p.vehiculo.placa  + "|");
-            System.out.println("|valor" + p.valor + "|");
-            System.out.println("|fecha y hora entrada:" + 
-            p.fechaInicio.toString() + "|");
+            System.out.println("Pago: |Placa:"+ p.getVehiculo().getPlaca()  + "|" +
+                "|valor" + p.getValor() + "|" +
+            "|fecha y hora entrada:" + 
+                p.getFechaInicio().toString() + "|" +
 
-            System.out.println("|Cupo:" + p.cupo.nombre + "|");
-            System.out.println("|Empleados:" + p.empleado.codigo + "|");
+            "|Cupo:" + p.getCupo().getNombre() + "|" +
+                "|Empleados:" + p.getEmpleado().getCodigo() + "|");
         }
     }
     
 }
-
-       
-
 
 
 
